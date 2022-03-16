@@ -26,3 +26,13 @@ it('should create a cat', async () => {
     favoriteToy: 'Socks',
   });
 });
+
+it('should be able to list a cat by id', async () => {
+  const cat = await Cat.insert({ name: 'Thor', age: 2, favoriteToy: 'Sock' });
+  const res = await request(app).get(`/api/v1/cats/${cat.id}`);
+  expect(res.body).toEqual(cat);
+});
+
+it('should be able to list cats', async () => {
+  
+});
