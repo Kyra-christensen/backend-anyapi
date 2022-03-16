@@ -11,7 +11,7 @@ CREATE TABLE cats (
 );
 
 INSERT INTO
-  cats (name, age, favorite_toy)
+  cats (name, age, favorite_item)
 VALUES
   ('Thor', 2, 'Socks'),
   ('Liam', 2, 'Catnip');
