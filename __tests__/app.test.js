@@ -34,5 +34,14 @@ it('should be able to list a cat by id', async () => {
 });
 
 it('should be able to list cats', async () => {
-  
+  await Cat.insert({ name: 'Thor', age: 2, favoriteToy: 'Socks' });
+  const res = await request(app).get('/api/v1/cats');
+  expect(res.body).toEqual([
+    {
+      id: expect.any(String),
+      name: 'Thor',
+      age: 2,
+      favoriteToy: 'Socks'
+    }
+  ]);
 });
