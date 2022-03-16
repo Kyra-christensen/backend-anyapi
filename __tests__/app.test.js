@@ -45,3 +45,19 @@ it('should be able to list cats', async () => {
     }
   ]);
 });
+
+it('should be able to update a cat', async () => {
+  const cat = await Cat.insert({ name: 'Thor', age: 2, favoriteToy: 'Socks' });
+  const res = await request(app)
+    .patch(`/api/v1/cats/${cat.id}`)
+    .send({ name: 'Liam', age: 2, favoriteToy: 'Catnip' });
+
+  const expected = {
+    id: expect.any(String),
+    name: 'Liam',
+    age: 2,
+    favoriteToy: 'Catnip',
+  };
+  expect(res.body).toEqual(expected);
+  expect(await Cat.getById(cat.id)).toEqual(expected);
+});
