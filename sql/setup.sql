@@ -5,13 +5,13 @@ DROP TABLE IF EXISTS cats;
 
 CREATE TABLE cats (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  name TEXT NOT NULL,
+  cat_name TEXT NOT NULL,
   age INT NOT NULL CHECK (age > -1),
   favorite_toy TEXT
 );
 
 INSERT INTO
-  cats (name, age, favorite_toy)
+  cats (cat_name, age, favorite_toy)
 VALUES
   ('Thor', 2, 'Socks'),
   ('Liam', 2, 'Catnip');
